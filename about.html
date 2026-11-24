@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Al-Mehar Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <style>
+        /* Reuse the same CSS variables and base styles from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #3367d6;
+            --secondary: #f8a31b;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --text: #333333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background: #2855b8;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #e5940a;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Page Banner */
+        .page-banner {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('header 1.jpeg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .page-banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-banner h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+            margin-left: 0;
+        }
+        
+        .breadcrumb a {
+            color: var(--light);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--secondary);
+        }
+        
+        /* About History */
+        .about-history {
+            background: var(--light);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 20px 0;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 25px;
+        }
+        
+        .timeline-item:nth-child(odd):before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even):before {
+            left: -10px;
+        }
+        
+        /* CEO Section */
+        .ceo-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .ceo-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .ceo-content {
+            flex: 1;
+        }
+        
+        .ceo-signature {
+            font-family: cursive;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-top: 20px;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .member-social a {
+            width: 35px;
+            height: 35px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .member-social a:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Philosophy Section */
+        .philosophy-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .philosophy-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .philosophy-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--dark);
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .philosophy-quote:before,
+        .philosophy-quote:after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary);
+            position: absolute;
+            line-height: 1;
+        }
+        
+        .philosophy-quote:before {
+            top: -20px;
+            left: -40px;
+        }
+        
+        .philosophy-quote:after {
+            bottom: -40px;
+            right: -40px;
+        }
+        
+        /* Clients Section */
+        .clients-section {
+            background: var(--light);
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .client-logo img {
+            max-height: 80px;
+            width: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .ceo-section {
+                flex-direction: column;
+            }
+            
+            .timeline:before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd):before,
+            .timeline-item:nth-child(even):before {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                font-size: 1.5rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: white;
+                width: 80%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 20px 0;
+            }
+            
+            .page-banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .philosophy-quote {
+                font-size: 1.4rem;
+            }
+            
+            .philosophy-quote:before {
+                left: -20px;
+            }
+            
+            .philosophy-quote:after {
+                right: -20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-banner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="home" class="logo">
+                <img src="logo 3.png" alt="Al-Mehar Construction Terminal">
+            </a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="services">Services</a></li>
+                <li><a href="projects">Projects</a></li>
+                <li><a href="contact">Contact</a></li>
+				<li><a href="certification">Certification</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container page-banner-content">
+            <h1>About Our Company</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Company History -->
+    <section class="section about-history">
+        <div class="container">
+            <h2 class="section-title">Our 30-Year Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1994</div>
+                        <h3>Foundation</h3>
+                        <p>Al-Mehar Construction was established with a vision to transform Pakistan's construction industry through quality workmanship and ethical practices.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2002</div>
+                        <h3>First Major Project</h3>
+                        <p>Successfully completed the Doctor Essa Labotory, establishing our reputation for delivering large-scale projects on time and within budget.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2010</div>
+                        <h3>Expansion</h3>
+                        <p>Expanded operations to include industrial construction and infrastructure projects, growing our team to over 200 skilled professionals.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3>Present Day</h3>
+                        <p>Now with over 500 completed projects, we continue to build Pakistan's future while maintaining our commitment to quality and integrity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Section -->
+    <section class="section">
+        <div class="container">
+            <div class="ceo-section">
+                <div class="ceo-image">
+                    <img src="protrait 1.jpg" alt="Engr Muhammad Aqeel Sarwar - CEO">
+                </div>
+                <div class="ceo-content">
+                    <h2 class="section-title">Message From Our CEO</h2>
+                
+                    <p>For three decades, Al-Mehar Construction has stood as a testament to the power of strong foundations—both in our structures and in our values. As a civil engineer with over 30 years of experience, I've always believed that buildings are more than just concrete and steel; they are the spaces where lives unfold, businesses thrive, and communities grow.</p>
+                    <p>Our philosophy, "Strong Foundations, Lasting Structures," guides every project we undertake. It represents our commitment to not only constructing physically sound buildings but also building lasting relationships with our clients, partners, and the communities we serve.</p>
+                    <p>I'm proud of our diverse, cooperative team whose expertise and dedication have made us one of Pakistan's most trusted construction firms. From commercial high-rises to residential communities, each project carries our signature quality and attention to detail.</p>
+                    <p>As we look to the future, we remain committed to innovation, sustainability, and excellence in everything we build.</p>
+                    <div class="ceo-signature">Engr. Muhammad Aqeel Sarwar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Philosophy Section -->
+    <section class="section">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h2 class="section-title">Our Philosophy</h2>
+                <p>At Al-Mehar Construction, we believe that exceptional buildings begin with exceptional foundations. This principle guides our approach to every project, from initial planning to final execution.</p>
+                
+                <div class="philosophy-quote">
+                    Strong Foundations, Lasting Structures
+                </div>
+                
+                <p>This philosophy extends beyond physical construction to encompass the foundations of our relationships with clients, our commitment to ethical practices, and our investment in our team's growth and development.</p>
+                <p>We combine traditional craftsmanship with modern technology, ensuring that each structure we build not only meets today's needs but stands the test of time for generations to come.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="home" class="footer-logo">Al-<span>Mehar</span></a>
+                    <p>Building excellence with integrity, quality, and innovation since 1994. Your trusted partner for all construction needs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="services">Services</a></li>
+                        <li><a href="projects">Projects</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+						<li><a href="certification">Certification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services">Residential Construction</a></li>
+                        <li><a href="services">Commercial Construction</a></li>
+                        <li><a href="services">Industrial Construction</a></li>
+                        <li><a href="services">Renovation & Remodeling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> office no.4, building no.29-c, Sunset Lane 1, DHA Phase 2 Ext.</li>
+                        <li><i class="fas fa-phone"></i> 0333-2618926</li>
+                        <li><i class="fas fa-envelope"></i> aqeelssuet@yahoo.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Al-Mehar Construction Terminal. All Rights Reserved.  | <a href="privacy-policy.html" style="color: #ddd; text-decoration: underline;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Scroll animation
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#remove html file extension-e.g. https://example.com/file.html will become https://example.com/file
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+RewriteEngine On
+
+# Hide .php extension for study.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^study$ study.php [L,QSA]
+
+# Optional: If someone visits study.php directly, cleanly redirect them to just /study
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^study\.php$ /study [R=301,L]

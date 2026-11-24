@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | Al-Mehar Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <style>
+        /* Reuse existing styles from main CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #3367d6;
+            --secondary: #f8a31b;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --text: #333333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+            padding-top: 80px; /* Add padding to body to compensate for fixed header */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background: #2855b8;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #e5940a;
+        }
+        
+        .section {
+            padding: 100px 0 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0; /* Ensure header is fixed to the top */
+            left: 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-menu a.active {
+            color: var(--primary);
+        }
+        
+        .nav-menu a.active:after,
+        .nav-menu a:hover:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            background-color: var(--light);
+        }
+        
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-content a {
+            color: var(--primary);
+        }
+        
+        .breadcrumb-content span {
+            margin: 0 10px;
+            color: var(--gray);
+        }
+        
+        /* Certifications Grid */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .certificate-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .certificate-card:hover .certificate-image img {
+            transform: scale(1.05);
+        }
+        
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .certificate-card:hover .certificate-overlay {
+            opacity: 1;
+        }
+        
+        .view-certificate {
+            color: white;
+            background: var(--primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .certificate-content {
+            padding: 20px;
+        }
+        
+        .certificate-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .certificate-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .certificate-date {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .certificate-date i {
+            margin-right: 8px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            animation: zoom 0.3s ease;
+        }
+        
+        @keyframes zoom {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        
+        .modal-image {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--secondary);
+        }
+        
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .certifications-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                font-size: 1.5rem;
+                z-index: 1001;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: white;
+                width: 80%;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+                padding: 80px 20px 40px;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 10px;
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0 60px;
+            }
+            
+            .modal-content {
+                margin: 15% auto;
+                width: 95%;
+            }
+            
+            body {
+                padding-top: 70px; /* Adjust for smaller header on mobile */
+            }
+            
+            /* Prevent body scroll when menu is open */
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .certificate-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            body {
+                padding-top: 65px; /* Further adjustment for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="home" class="logo">
+                <img src="logo 3.png" alt="Al-Mehar Construction Terminal">
+            </a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="home">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="services">Services</a></li>
+                <li><a href="projects">Projects</a></li>
+                <li><a href="certification" class="active">Certification</a></li>
+                <li><a href="contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container breadcrumb-content">
+            <a href="home">Home</a>
+            <span>/</span>
+            <a href="certification">Certifications</a>
+        </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Certifications</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+                Al-Mehar Construction is proud to hold various certifications that demonstrate our commitment to quality, safety, and professional excellence in the construction industry.
+            </p>
+            
+            <div class="certifications-grid">
+                <div class="certificate-card">
+                    <div class="certificate-image">
+                        <img src="certificate 3.jpg" alt="Pakistan Engineering Council Licence">
+                        <div class="certificate-overlay">
+                            <a href="certificate 3.jpg" class="view-certificate" data-caption="Pakistan Engineering Council Licence">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Pakistan Engineering Council Licence</h3>
+                        <p>Licence validating operator and constructor privileges</p>
+                        <div class="certificate-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Issued: July 19, 2020 | Valid Until: June 30, 2026</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="certificate-card">
+                    <div class="certificate-image">
+                        <img src="certificate 2.jpg" alt="Trademark Certification">
+                        <div class="certificate-overlay">
+                            <a href="certificate 2.jpg" class="view-certificate" data-caption="Trademark Certification">View Certificate</a>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Trademark Certification</h3>
+                        <p>Trademark registry for Al-Mehar Construction Terminal</p>
+                        <div class="certificate-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Issued: February 16, 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="Certificate">
+            <p id="modalCaption" class="modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="home" class="footer-logo">Al-<span>Mehar</span></a>
+                    <p>Building excellence with integrity, quality, and innovation since 1994. Your trusted partner for all construction needs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="services">Services</a></li>
+                        <li><a href="projects">Projects</a></li>
+                        <li><a href="certification">Certification</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services">Construction Contractor</a></li>
+                        <li><a href="services">Developer</a></li>
+                        <li><a href="services">Builder</a></li>
+                        <li><a href="services">Engineering services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> office no.4, building no.29-c, Sunset Lane 1, DHA Phase 2 Ext.</li>
+                        <li><i class="fas fa-phone"></i> 0333-2618926 </li>
+                        <li><i class="fas fa-whatsapp"></i> +92 333 2618926 </li>
+                        <li><i class="fas fa-envelope"></i> aqeelssuet@yahoo.com </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Al-Mehar Construction Terminal. All Rights Reserved. | <a href="privacy-policy.html" style="color: #ddd; text-decoration: underline;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const body = document.body;
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Certificate Modal Functionality
+        const modal = document.getElementById('certificateModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.querySelector('.modal-close');
+        
+        // Add click event to all view certificate buttons
+        document.querySelectorAll('.view-certificate').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const imageUrl = button.getAttribute('href');
+                const caption = button.getAttribute('data-caption');
+                
+                modalImage.src = imageUrl;
+                modalCaption.textContent = caption;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            });
+        });
+        
+        // Close modal when clicking on X
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+        
+        // Close modal when clicking outside the image
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Scroll animation for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
